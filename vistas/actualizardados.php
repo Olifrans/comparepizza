@@ -17,20 +17,12 @@ switch ($tabela)
         actualizar($tabela,$sql);
         break;
 
-    case 'PIZZAS':
+    case 'MENU':
         $sql="ChavePizza='".$_POST['chave']."',  Nome='".$_POST['nome']."', 
-		Quantidade=".$_POST['quantidade'].",
-		Precio=".$_POST['precio'].", 
+		Nome=".$_POST['nome'].",
+		Preco=".$_POST['preco'].", 
 		Imagen=".$_POST['idimg'].",
         IdMenu=".$_POST['idmenu']." WHERE IdPizza=".$_POST['id']."";
-        actualizar($tabela,$sql);
-        break;
-
-    case 'MENU':
-         $sql="Dia='".$_POST['dia']."', 
-		Promociones='".$_POST['pro']."',
-        HorarioApertura='".$_POST['ha']."', 
-		HorarioCierre='".$_POST['hc']."' WHERE IdMenu=".$_POST['id']."";
         actualizar($tabela,$sql);
         break;
 

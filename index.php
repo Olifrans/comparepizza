@@ -25,7 +25,7 @@ if($inic==null||$inic==''){
 <html lang="pt-br">
 
 <head>
-    <title>TCC FAM Comparepizza</title>
+    <title>TCC FAM ComparePizza</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-
@@ -43,8 +43,8 @@ if($inic==null||$inic==''){
 </head>
 
 
-
 <body>
+
   
     <script>
         (function(d, s, id) {
@@ -58,6 +58,7 @@ if($inic==null||$inic==''){
     </script>
 
 
+
     <div id="Home" style=" width: 100%; height: 800px;" data-vide-bg="videopg/banner" data-vide-options=" loop: false, silenciado: false, posición: 0% 0% ">
 
 
@@ -66,18 +67,20 @@ if($inic==null||$inic==''){
             <div class="contenedor">
                 <h1 class="logo"><img src="imgpg/Comparepizza-v6.png" alt="" class="logo__comparepizza" id="comparepizza"></h1>
                 <span class="icon-menu" id="btn-menu"></span>
+
                 <nav class="nav" id="nav">
                     <ul class="menu">
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="#Home">Home</a></li>
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="#Buscar">Buscar</a></li>
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="#Mapa">Mapa</a></li>
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" id="btnPizzaria">Pizzaria</a></li>
-                 
+  
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="sessoes.html">Administrador</a></li>
                       
                         <li id="idPizzaria" style="display:none"><?php echo $idc ?></li>
-                    </ul>                  
-                </nav>              
+                    </ul>  
+                </nav>      
+
             </div>
 
         </header>
@@ -105,7 +108,7 @@ if($inic==null||$inic==''){
            
            
            <?php
-    setlocale(LC_ALL,"es_ES");
+    setlocale(LC_ALL,"'pt_BR'");
     include('bd/conexionbd.php');
 
     if (!$conexion) 
@@ -114,20 +117,21 @@ if($inic==null||$inic==''){
     }
 
 
-    $dias = array('Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo');
+    $dias = array('Calabresa','Mussarela','Italiana','Portuguesa');
 $fecha = $dias[date('N')]; 
 
+/*
+    $sql="SELECT MENU.ChavePizza,MENU.Nome AS 'NomeP',MENU.Preco,IMAGENS.Nome AS 'NomeI',MENU.Promociones,MENU.HorarioApertura,MENU.HorarioCierre FROM MENU,IMAGENS,MENU WHERE MENU.Dia='".$fecha."' AND MENU.IdMenu=MENU.IdMenu AND MENU.Imagen=IMAGENS.ChaveImg";
+    $result = mysqli_query($conexion,$sql); */
 
-    $sql="SELECT PIZZAS.ChavePizza,PIZZAS.Nome AS 'NomeP',PIZZAS.Preco,IMAGENS.Nome AS 'NomeI',MENU.Promociones,MENU.HorarioApertura,MENU.HorarioCierre FROM PIZZAS,IMAGENS,MENU WHERE MENU.Dia='".$fecha."' AND PIZZAS.IdMenu=MENU.IdMenu AND PIZZAS.Imagen=IMAGENS.ChaveImg";
-    $result = mysqli_query($conexion,$sql);
 
 
-       $sql1="SELECT MENU.Nome,MENU.Sabor FROM MENU WHERE MENU.Dia='".$fecha."'";
+       $sql1="SELECT MENU.Nome,MENU.Sabor FROM MENU WHERE MENU.Munu='".$fecha."'";
      $result1 = mysqli_query($conexion,$sql1);
 while($row1 = mysqli_fetch_array($result1)){
     
 echo'<h1 class="menu_pizzas" id="menu-dia">
-    Menu de Pizza '.$fecha.' Disponivél '.$row1['HorarioApertura'].' a '.$row1['HorarioCierre'].'</h1>';
+    Menu de Pizza '.$fecha.' Disponivél '.$row1['HorarioApertura'].' a '.$row1['Todos os dias 24Horas'].'</h1>';
 }
 echo'<ul class="class_lu">';
    
@@ -137,9 +141,10 @@ echo'<ul class="class_lu">';
 
             <img src="assets/img/'.$row['NomeI'].'" alt="" class="info__img">
             <p>'.$row['NomeP'].'</p>
+            <p>'.$row['SaborP'].'</p>
+            <p>'.$row['TamanhoP'].'</p>
             <p>$'.$row['Preco'].' MX</p>
-            <p>'.$row['Promociones'].'</p>
-            <a id="btnAgregar" data-id="'.$row['ChavePizza'].'" data-np="'.$row['NomeP'].'" data-pre="'.$row['Precio'].'"
+            <a id="btnAgregar" data-id="'.$row['ChavePizza'].'" data-np="'.$row['NomeP'].'" data-pre="'.$row['Preco'].'"
             data-img="'.$row['NomeI'].'"  class="mas">ORDENAR</a>
         </div>
     </li>';
@@ -164,8 +169,6 @@ echo'</ul>';
                             <th>Preco</th>
                             <th>Sabor</th>
                             <th>Tamanho</th>
-                            <th>Pasta</th>
-                            <th>Salsas</th>
                             <th>Total</th>
                             <th>Opciones</th>
 
@@ -287,36 +290,45 @@ echo'</ul>';
                         <form autocomplete="off" class="col s12" name="formAgregar">
                             <div class="row">
 
-
                                 <div class="input-field col s12">
                                     <p>Coordenadas da sua localização</p>
                                     <input type="text" id="localizacao" name="valor" readonly="readonly">
                                 </div>
 
-
                                 <div class="input-field col s6">
-                                    <input id="colonia" type="text" class="validate">
-                                    <label for="colonia">Colonia</label>
+                                    <input id="cidade" type="text" class="validate">
+                                    <label for="cidade">Cidade</label>
                                 </div>
 
-
                                 <div class="input-field col s6">
-                                    <input id="calles" type="text" class="validate">
-                                    <label for="calles">Calles</label>
+                                    <input id="estado" type="text" class="validate">
+                                    <label for="estado">Estado</label>
                                 </div>
 
+                                <div class="input-field col s6">
+                                    <input id="pais" type="text" class="validate">
+                                    <label for="pais">País</label>
+                                </div>
+                            
+                                <div class="input-field col s6">
+                                    <input id="endereco" type="text" class="validate">
+                                    <label for="endereco">Endereço</label>
+                                </div>
 
                                 <div class="input-field col s6">
                                     <input id="numcasa" type="text" class="validate">
                                     <label for="numcasa">Número de Casa</label>
                                 </div>
 
+                                <div class="input-field col s6">
+                                    <input id="cep" type="text" class="validate">
+                                    <label for="cep">Cep</label>
+                                </div>
 
                                 <div class="input-field col s6">
                                     <input id="referencias" type="text" class="validate">
                                     <label for="referencias">Referencias</label>
                                 </div>
-
 
                                 <div id="mapPizzaria" class="input-field col s6">
                                 </div>
@@ -362,7 +374,7 @@ echo'</ul>';
         </div>
         
 
-        <!---------Modal Pizzaria Logar sesión---------->
+        <!---------Modal Pizzaria Logar sessão---------->
         <div id="modalPizzaria" class="modal modal-fixed-footer">
             <div class="modal-content">
                 <!--Input fields-->
@@ -382,6 +394,7 @@ echo'</ul>';
                                     <input name="senhaS" id="senhaC1" type="password" class="validate">
                                     <label for="senha">Senha</label>
                                 </div>
+
                                    <div class="input-field col s12">
                                  <span id="respostaPizzaria" style="color: red;"></span>
                                 </div>
@@ -392,6 +405,7 @@ echo'</ul>';
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer">
                <td>
                 <a id="btnCriar" class="
@@ -422,23 +436,55 @@ echo'</ul>';
 
                         <form autocomplete="off" class="col s12" name="formAgregar">
                             <div class="row">
-                                <div class="input-field col s12">
-                                    
+
+                                <div class="input-field col s12">                                  
                                     <input id="nome" type="text" class="validate">
                                     <label for="icon_prefix">Nome completo</label>
                                 </div>
+
                                  <div class="input-field col s12">
                                     <input id="usuario" type="text" class="validate">
                                     <label for="icon_prefix">Nome de usuario</label>
                                 </div>
+
                                 <div class="input-field col s12">
                                     <input id="senha1" type="password" class="validate">
                                     <label for="senha">Senha</label>
                                 </div>
+
+
                                 <div class="input-field col s12">
-                                    <input id="senha2" type="password" class="validate">
-                                    <label for="senha">Repita a senha</label>
+                                    <input id="enderecocadpizza" type="text" class="validate">
+                                    <label for="enderecocadpizza">Digite seu endereço</label>
                                 </div>
+
+                                <div class="input-field col s12">
+                                    <input id="numcadpizza" type="text" class="validate">
+                                    <label for="numcadpizza">Digite o numero do seu endereço</label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <input id="cepcadpizza" type="text" class="validate">
+                                    <label for="cepcadpizza">Digite o cep do seu endereço</label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <input id="cidadecadpizza" type="text" class="validate">
+                                    <label for="cidadecadpizza">Digite a cidade</label>
+                                </div>
+
+                                
+                                <div class="input-field col s12">
+                                    <input id="estadocacadpizza" type="text" class="validate">
+                                    <label for="estadocacadpizza">Digite a estado</label>
+                                </div>
+
+                                
+                                <div class="input-field col s12">
+                                    <input id="paiscacadpizza" type="text" class="validate">
+                                    <label for="paiscacadpizza">Digite o pais</label>
+                                </div>
+
                                 <div id="tel" class="input-field col s12">
                                     <input id="telefone" type="tel" class="validate">
                                     <label for="icon_telephone">Telefone</label>
@@ -455,6 +501,7 @@ echo'</ul>';
                     <a id="btnPizzariaC" class="
             modal-action waves-effect waves-light btn">Logar</a>
                 </td>
+
                 <td>
                     <a id="btnCancelarPizzariaC" class="
             modal-action waves-effect waves-light red btn">Cancelar</a>
@@ -496,15 +543,19 @@ echo'</ul>';
            
             <div class="modal-footer">
                 <td>
-                    <a id="btnCerrarSC" class="
-            modal-action waves-effect waves-light btn">Cerrar sesión</a>
+                    <a id="btnFecharSC" class="
+            modal-action waves-effect waves-light btn">Fechar sessão</a>
                 </td>
                 <td>
                     <a id="btnCancelarDC" class="
             modal-action waves-effect waves-light red btn">Cancelar</a>
                 </td>
             </div>
+
         </div>
+
+
+
         <footer class="footer">
             <div class="social">
                 <a href="https://www.facebook.com/ComparePizzaNew/" class="icon-facebook"></a>
@@ -518,6 +569,7 @@ echo'</ul>';
             <img src="imgpg/LOGO-COMPAREPIZZA.png" alt="" class="giratec">
             <p class="copy">&copy; Compare Pizza & todos os direitos reservados</p>
         </footer>
+
         <script src="js/materialize.min.js"></script>
         <script src="js/Mapa.js"></script>
         <script src="js/menu.js"></script>

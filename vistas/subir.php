@@ -32,7 +32,7 @@ $insertar="INSERT INTO IMAGENS VALUES(".$cero.",'".$nome."')";
 	$query=mysqli_query($conexion,$insertar);
 	if($query!=null){
 		echo '<script type="text/javascript">
-    Materialize.toast("El archivo:'.$nome.' foi salvo corretamente",4000,"rounded"); 
+    Materialize.toast("O arquivo:'.$nome.' foi salvo corretamente",4000,"rounded"); 
    </script>';
 	}else{
 		echo '<script type="text/javascript">
@@ -43,7 +43,7 @@ $insertar="INSERT INTO IMAGENS VALUES(".$cero.",'".$nome."')";
 	}else{
 	if($_FILES['files']['error']!=''){	
 	echo '<script type="text/javascript">
-	 Materialize.toast("El archivo: '.$nome.' não pôde fazer upload, error: '.$_FILES['files']['error'].'" ,4000,"rounded"); 
+	 Materialize.toast("O arquivo: '.$nome.' não pôde fazer upload, error: '.$_FILES['files']['error'].'" ,4000,"rounded"); 
    </script>';
 	}
 	}

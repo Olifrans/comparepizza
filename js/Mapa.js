@@ -3,9 +3,6 @@ boton.addEventListener('click', function() {
     findMe();
 });
 
-
-
-
 var arregloPines = [];
 
 function findMe() {
@@ -91,9 +88,9 @@ function comparepizzaInfo(map, comparepizza) {
         '</div>' +
         '<div id="info">' +
         '<h1>ComparePizza</h1>' +
-        '<p>Somos a ComparePizza, temos uma variedade de pizzas e sabores diferentes $80.00 MX, ven y conócenos en: Av. Revolución #825, Barrio del Dulce Nome, frente a Elektra segunda planta, Chilapa de Álvarez, Gro. Horarios: 10:00am a 6:00pm.</p>' +
+        '<p>Somos a ComparePizza, uma variedade de pizzas e sabores diferentes.</p>' +
         '<p>Visite-nos no nosso Facebook:<a href="https://www.facebook.com/ComparePizzaNew/">' +
-        '@ComedorOriental</a></p>' +
+        '@ComparePizza</a></p>' +
         '</div>' +
         '</div>';
     var infowindow = new google.maps.InfoWindow({

@@ -17,8 +17,8 @@ switch ($tabela)
     case 'IMAGENS':
        imagens($conexion);
         break;
-    case 'PIZZAS':
-        pizzas($conexion);
+    case 'CADASTRODEPIZZARIA':
+        cadastrodepizzaria($conexion);
         break;
     case 'MENU':
         menu($conexion);
@@ -148,7 +148,7 @@ mysqli_close($conexion);
 
 function PIZZAS($conexion){
       
-	$sql="SELECT PIZZAS.IdPizza,PIZZAS.ChavePizza,PIZZAS.Nome,PIZZAS.Quantidade,PIZZAS.Precio,IMAGENS.Nome AS 'NomeP',IMAGENS.ChaveImg AS 'ChaveImg',PIZZAS.IdMenu,MENU.Dia FROM PIZZAS,IMAGENS,MENU WHERE PIZZAS.Imagen=IMAGENS.ChaveImg AND PIZZAS.IdMenu=MENU.IdMenu";
+	$sql="SELECT CADASTRODEPIZZARIA.IdPizza,CADASTRODEPIZZARIA.ChavePizza,CADASTRODEPIZZARIA.Nome,CADASTRODEPIZZARIA.Cidade,MENU.Preco,IMAGENS.Nome AS 'NomeP',IMAGENS.ChaveImg AS 'ChaveImg',CADASTRODEPIZZARIA.IdMenu,MENU.Dia FROM PIZZAS,IMAGENS,MENU WHERE CADASTRODEPIZZARIA.Imagen=IMAGENS.ChaveImg AND CADASTRODEPIZZARIA.IdMenu=MENU.IdMenu";
     $pizzas = mysqli_query($conexion,$sql);
 
 echo '<div class="container" style="margin-bottom: 128px;">
@@ -162,11 +162,10 @@ echo '<div class="container" style="margin-bottom: 128px;">
 					
 						<th data-field="id">CHAVE PIZZA</th>
 						<th data-field="name">NOME</th>
-						<th data-field="name">Quantidade</th>
-						<th data-field="name">PRECIO</th>
+						<th data-field="name">Tamanho</th>
+						<th data-field="name">PRECO</th>
 						<th data-field="name">IMAGEN</th>
 						<th data-field="name">NOME IMG</th>
-                        <th data-field="name">DÍA</th>
 						<th data-field="option">OPCIONES</th>
 						
 					</tr>
@@ -197,7 +196,7 @@ echo '<div class="container" style="margin-bottom: 128px;">
 	</div>
 
 </div>';
-echo'<!---------Modal guardar Pizzaslatillos---------->
+echo'<!---------Modal guardar Pizzas---------->
 <div id="modalGI" class="modal modal-fixed-footer">
 	<div class="modal-content">
 
@@ -244,7 +243,7 @@ echo'<!---------Modal guardar Pizzaslatillos---------->
 							<table class="responsive-table">
 							<tbody>';
 	
-							$img="SELECT MENU.IdMenu,MENU.Dia,MENU.Promociones FROM MENU";
+							$img="SELECT MENU.IdMenu,MENU.Nome,MENU.Sabor,MENU.Tamanho,MENU.Preco FROM MENU";
 							$menu = mysqli_query($conexion,$img);
 							 while($row = mysqli_fetch_array($menu)) 
 							 { 
@@ -254,8 +253,8 @@ echo'<!---------Modal guardar Pizzaslatillos---------->
 							
 							<button class="waves-effect waves-light btn" id="btnSelectMenu" data-idm="'.$row['IdMenu'] .'" data-dia="'.$row['Dia'] .'">Seleccionar</button>
 	                        </td>
-							<td>'.$row['Dia'].'</td>
-							<td>'.$row['Promociones'].'</td>
+							<td>'.$row['Nome'].'</td>
+							<td>'.$row['Preco'].'</td>
 							 </tr>';
 							 }
 	       
@@ -372,7 +371,7 @@ echo'<!---------Modal Actualizar Pizzas---------->
 							<table class="responsive-table">
 							<tbody>';
 	
-							$img="SELECT MENU.IdMenu,MENU.Dia,MENU.Promociones FROM MENU";
+							$img="SELECT MENU.IdMenu,MENU.Nome,MENU.Preco FROM MENU";
 							$menu = mysqli_query($conexion,$img);
 							 while($row = mysqli_fetch_array($menu)) 
 							 { 
@@ -382,8 +381,8 @@ echo'<!---------Modal Actualizar Pizzas---------->
 							
 							<button class="waves-effect waves-light btn" id="btnSelectMenuA" data-idm="'.$row['IdMenu'] .'" data-dia="'.$row['Dia'] .'">Seleccionar</button>
 	                        </td>
-							<td>'.$row['Dia'].'</td>
-							<td>'.$row['Promociones'].'</td>
+							<td>'.$row['Nome'].'</td>
+							<td>'.$row['Preco'].'</td>
 							 </tr>';
 							 }
 	       
@@ -469,10 +468,10 @@ echo '<div class="container" style="margin-bottom: 128px;">
 					<tr>
 					
 						<th data-field="id">CHAVE MENÚ</th>
-						<th data-field="name">DÍA</th>
-						<th data-field="name">PROMOCIONES</th>
-						<th data-field="name">HORA APERTURA</th>
-						<th data-field="name">HORA CIERRE</th>
+						<th data-field="name">NOME</th>
+						<th data-field="name">SABOR</th>
+						<th data-field="name">TAMANHO</th>
+						<th data-field="name">PREÇO</th>
 						<th data-field="option">OPCIONES</th>
 						
 					</tr>
@@ -482,10 +481,10 @@ echo '<div class="container" style="margin-bottom: 128px;">
                 {
 					echo'<tr>';
 					echo'<td>'.$row['IdMenu'].'</td>';
-					echo'<td>'.$row['Dia'].'</td>';
-					 echo'<td>'.$row['Promociones'].'</td>';
-					 echo'<td>'.$row['HorarioApertura'].'</td>';
-					echo '<td>'.$row['HorarioCierre'].'</td>';
+					echo'<td>'.$row['Nome'].'</td>';
+					 echo'<td>'.$row['Sabor'].'</td>';
+					 echo'<td>'.$row['Tamanho'].'</td>';
+					echo '<td>'.$row['Preco'].'</td>';
 					echo '<td>
 					 <button class="waves-effect waves-light red btn" id="btnEliminarMenu" data-id="'. $row['IdMenu'] .'"><i class="tccpizza tccpizza-minus"></i></button>		
 	                 <button class="waves-effect waves-light btn" id="btnEditarM" data-id="'. $row['IdMenu'] .'"><i class="tccpizza tccpizza-edit"></i></button>
@@ -708,7 +707,7 @@ echo '<div class="container" style="margin-bottom: 128px;margin-bottom: 400px;">
 						</div>
 						<div class="input-field col s6">
 							<input id="senhaAdmin" type="password" class="validate">
-							<label for="senhaAdmin">Senha seña del administrador</label>
+							<label for="senhaAdmin">Senha somente administrador</label>
 						</div>
 			</div>
             </div>

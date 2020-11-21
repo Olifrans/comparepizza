@@ -3,22 +3,22 @@
      $('#btnCancelarDC').click(function(e) {
          $('#modalDadosPizzaria').modal('close');
      });
-     $('#btnCancelarPizzariasS').click(function(e) {
-         $('#modalPizzarias').modal('close');
+     $('#btnCancelarPizzariaS').click(function(e) {
+         $('#modalPizzaria').modal('close');
      });
-     $('#btnCancelarPizzariasC').click(function(e) {
-         $('#modalPizzariasCriar').modal('close');
+     $('#btnCancelarPizzariaC').click(function(e) {
+         $('#modalPizzariaCriar').modal('close');
      });
      $('#btnCerrarSC').click(function(e) {
          document.location.href = './vistas/fecharSessaoPizzaria.php';
      });
 
-     $('#btnPizzarias').click(function(e) {
+     $('#btnPizzaria').click(function(e) {
 
          var idcli = $('#idPizzaria').text();
 
          if (idcli == "") {
-             $('#modalPizzarias').modal('open');
+             $('#modalPizzaria').modal('open');
          } else {
              $('#modalDadosPizzaria').modal('open');
          }
@@ -26,8 +26,8 @@
      });
      // Eventos de registro de Pizzarias  
      $("#btnCriar").click(function(event) {
-         $('#modalPizzarias').modal('close');
-         $('#modalPizzariasCriar').modal('open');
+         $('#modalPizzaria').modal('close');
+         $('#modalPizzariaCriar').modal('open');
      });
 
      $('#btnLogarAdmin').click(function(event) {
@@ -41,7 +41,7 @@
          validarAdministrador(parametros);
      });
 
-     $('#btnPizzariasS').click(function(event) {
+     $('#btnPizzariaS').click(function(event) {
          event.preventDefault();
          var nomeC = $('#usuarioC1').val();
          var senhaC = $('#senhaC1').val();
@@ -50,11 +50,11 @@
              'coc': senhaC
          };
 
-         validarPizzarias(parametros);
+         validarPizzaria(parametros);
      });
 
  });
- //validar secion de administrador
+ //validar sessão do administrador
  function validarAdministrador(parametros) {
      $.ajax({
          data: parametros,
@@ -62,7 +62,7 @@
          type: 'post',
          success: function(response) {
              if (response == "valido") {
-                 // $.post('./home.php', {nome: "gerardo"});
+                 // $.post('./home.php', {nome: "tcc"});
                  document.form1.submit();
                  //document.location.href='./home.php?n='+parametros.no;
              } else {
@@ -71,12 +71,12 @@
          }
      });
  };
- //validar secion de Pizzarias
+ //validar sesão Pizzarias
 
- function validarPizzarias(parametros) {
+ function validarPizzaria(parametros) {
      $.ajax({
          data: parametros,
-         url: "./vistas/validarPizzarias.php",
+         url: "./vistas/validarPizzaria.php",
          type: 'post',
          success: function(response) {
              if (response == "valido") {
@@ -99,7 +99,7 @@
 
      } else {
 
-         $('#btnPizzarias').text("Sesión");
+         $('#btnPizzaria').text("Sesión");
          $('#btnCarrito').removeClass('ocultar');
      }
  }

@@ -59,9 +59,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 INSERT INTO `menu` (`IdMenu`, `Nome`, `Sabor`, `Tamanho`, `Preco`) VALUES
 	(1, 'Calabresa', 'Defumada', 'Média', '15'),
-	(2, 'Queijo',  'Minas', 'Pequena', '10');	
+	(2, 'Queijo', 'Minas', 'Pequena', '10');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
-
 
 
 -- Estrutura para tabela comparepizza.imagens
@@ -122,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
 INSERT INTO `localizacao` (`ChaveLocalizacao`, `Cidade`, `Estado`, `Pais`, `Endereco`, `Numero`, `Cep`, `Referencias`, `CordenadaLatitudLongitud`) VALUES
 	(147, 'São Paulo', 'SP', 'BR', 'Rua A', '37', '01415258', 'Fam', ''),
 	(148, 'São Paulo', 'SP', 'BR', 'Rua B', '35', '01415358', 'Fam', ''),
-	(149, 'São Paulo', 'SP', 'BR', 'Rua C', '37', '01415258', 'Fam', '(17.603059506481078, -99.18139457702637)');
+	(149, 'São Paulo', 'SP', 'BR', 'Rua C', '37', '01415258', 'Fam', '(-23.5489, -46.6388)');
 
 /*!40000 ALTER TABLE `localizacao` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

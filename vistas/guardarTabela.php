@@ -11,12 +11,12 @@ $DATA = json_decode($_POST['data']);
 $cont=0;
 for ($j=2; $j < count($DATA); $j++) {
   $chave=$DATA[$j]->idp;
-$c[$j]= "SELECT PIZZAS.Quantidade,PIZZAS.Nome FROM PIZZAS WHERE PIZZAS.ChavePizza='".$chave."'"; 
+$c[$j]= "SELECT MENU.Preco,MENU.Nome FROM MENU WHERE MENU.ChavePizza='".$chave."'"; 
    $can[$j]=mysqli_query($conexion,$c[$j]);
     while($rowT = mysqli_fetch_array($can[$j])) 
     {       
-     $contotal=(int)$rowT['Quantidade'];
-       $menor=(int)$DATA[$j]->quantidade;
+     $contotal=(int)$rowT['Preco'];
+       $menor=(int)$DATA[$j]->preco;
        
      if($menor<=$contotal){
         $cont=$cont+1; 
@@ -27,10 +27,11 @@ $c[$j]= "SELECT PIZZAS.Quantidade,PIZZAS.Nome FROM PIZZAS WHERE PIZZAS.ChavePizz
      }
         
 }
+
 };
 $numero=(int)$DATA[1]->ntotal;
 if($numero==$cont){
-    $sql="'".$DATA[0]->colonia."','".$DATA[0]->calles."','".$DATA[0]->numcasa."','".$DATA[0]->referencia."','".$DATA[0]->localizacao."'";
+    $sql="'".$DATA[0]->cidade."','".$DATA[0]->estado."','".$DATA[0]->endereco."','".$DATA[0]->referencia."','".$DATA[0]->localizacao."'";
 $cero=0;
 $insertar="INSERT INTO ".$DATA[0]->tabela." VALUES(".$cero.",".$sql.")";
 $query=mysqli_query($conexion,$insertar);

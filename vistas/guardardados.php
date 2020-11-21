@@ -10,17 +10,12 @@ if($iniciadoU==null||$iniciadoU==''){
 
 switch ($tabela) 
     {
-    case 'PIZZAS':
+    case 'MENU':
      $sql="'".$_POST['chave']."','".$_POST['nome']."',".$_POST['sabor'].",".$_POST['preco'].",".$_POST['idimg'].",".$_POST['idmenu']."";
        insertar($tabela,$sql);
         break;
-    case 'MENU':
-       $sql="'".$_POST['dia']."','".$_POST
-['pro']."','".$_POST['ha']."','".$_POST['hc']."'";
-       insertar($tabela,$sql);
-        break;
     case 'LOCALIZACAO':
- $sql="'".$_POST['cidade']."','".$_POST
+  $sql="'".$_POST['cidade']."','".$_POST
 ['estado']."','".$_POST
 ['pais']."','".$_POST
 ['endereco']."','".$_POST

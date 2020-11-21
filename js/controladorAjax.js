@@ -29,11 +29,11 @@ $(document).ready(function() {
     $("#pizzas").click(function(event) {
         cargarTabela("PIZZAS");
     });
-    //evento de cargar dados del Menu
+    //evento da carga dados do Menu
     $("#menuP").click(function(event) {
         cargarTabela("MENU");
     });
-    //evento de cargar dados de Admin
+    //evento da carga dados do Admin
     $("#admin").click(function(event) {
         cargarTabela("ADMIN");
     });
@@ -63,7 +63,7 @@ $(document).ready(function() {
         $('#modalAI').modal('open');
 
     });
-    //evento del boton editar Pizzas
+    //evento do botão editar Pizzas
     $('button[id=btnEditarP]').click(function(event) {
         var dados = $(this).data("id");
         var dia = $(this).data("dia");
@@ -88,7 +88,7 @@ $(document).ready(function() {
         $('#idA').val(idimg);
         $('#modalAI').modal('open');
     });
-    //evento del boton editar admin
+    //evento do botão editar admin
     $('button[id=btnEditarAdmin]').click(function(event) {
         var contar = $(this).data("senha");
         var nome = $(this).data("nome");
@@ -142,7 +142,7 @@ $(document).ready(function() {
         calcularPrecioTotalVendas();
     });
 
-    //evento del boton editar Pizzas
+    //evento do botão  boto editar Pizzas
     $('button[id=btnEditarM]').click(function(event) {
 
         var dados = $(this).data("id");
@@ -209,7 +209,7 @@ $(document).ready(function() {
 
     });
 
-    //evento del boton guardar Menu
+    //evento do botão guardar Menu
     $('#btnGuardarMenu').click(function(event) {
 
         var dia = $('#diaMenuG').val();
@@ -257,7 +257,7 @@ $(document).ready(function() {
         }
 
     });
-    //evento del boton actualizar Admin
+    //evento do botão tualizar Adminn
     $('#btnActualizarAdmin').click(function(event) {
         var id = $(this).val();
         var nomead = $('#nomeAdminA').val();
@@ -280,13 +280,13 @@ $(document).ready(function() {
         }
 
     });
-    //evento del boton actualizar Pizzas
+    //evento do botão tualizar  Pizzas
     $('#btnActulizarP').click(function(event) {
         var id = $(this).val();
         var validarA = $('#chavePizzaA').val();
         var nomeA = $('#nomePizzaA').val();
         var quantidadeA = $('#quantidadePizzaA').val();
-        var precioA = $('#precioPizzaA').val();
+        var precoA = $('#precioPizzaA').val();
         var idMenuA = $('#idMenuA').val();
         var imgA = $('#idA').val();
         if (validarA.length > 0 && nomeA.length > 0 && imgA.length > 0 && idMenuA.length > 0) {
@@ -296,7 +296,7 @@ $(document).ready(function() {
                 "chave": validarA,
                 "nome": nomeA,
                 "quantidade": quantidadeA,
-                "precio": precioA,
+                "precio": precoA,
                 "idimg": imgA,
                 "idmenu": idMenuA
             };
@@ -307,7 +307,8 @@ $(document).ready(function() {
             Materialize.toast('Ingresa una chave,nome, día y imagen', 6000);
         }
     });
-    //evento del boton actualizar Menu
+
+    //evento do botão tualizar   Menu
     $('#btnActulizarM').click(function(event) {
         var id = $(this).val();
         var dia = $('#diaMenuActualizar').val();
@@ -428,7 +429,7 @@ $(document).ready(function() {
         var id = $(this).data("id");
         e.preventDefault();
         swal({
-            title: "REALIZAR VENTA",
+            title: "REALIZAR VENDA",
             text: "Total del Pedido: $ " + total + ".00 MX",
             type: "input",
             showCancelButton: true,
@@ -517,9 +518,9 @@ var arregloPines = [];
 function findMe(ubi) {
     var divConte = document.getElementById('mapa');
     if (navigator.geolocation) {
-        divConte.innerHTML = "<p> Tu navegador soporta geolocalizacion</p>";
+        divConte.innerHTML = "<p> Teu navegador suporta geolocalizacion</p>";
     } else {
-        divConte.innerHTML = "<p> No lo soporta</p>";
+        divConte.innerHTML = "<p> Não suporta</p>";
     }
     navigator.geolocation.getCurrentPosition(localizacion, error);
 
@@ -630,7 +631,9 @@ function pizzariaInfo(map, latLng) {
     });
 };
 ///////////------FIN-----LISTADO PEDIDOS---------/////////////////
-//Visualizar Y validar Imagen
+
+
+//Visualizar e validar Imagen
 function archivo(evt) {
     var ext = document.getElementById("files").value;
     ext = ext.substring(ext.length - 3, ext.length);
@@ -640,7 +643,7 @@ function archivo(evt) {
         var files = evt.target.files; // FileList object
         // Obtenemos la imagen del campo "file".
         for (var i = 0, f; f = files[i]; i++) {
-            //Solo admitimos imágenes.
+            //Apenas imagens.
             if (!f.type.match('image.*')) {
                 continue;
             }

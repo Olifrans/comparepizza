@@ -12,7 +12,7 @@ $(document).ready(function() {
         var idcli = $('#idPizzaria').text();
 
         if (idcli == "") {
-            Materialize.toast('Para fazer consulta de Pizzarias "Pizzarias"', 8000);
+            Materialize.toast('Para fazer consulta de Pizzas "Pizzarias"', 8000);
         } else {
             var id = $(this).data("id");
             var img = $(this).data("img");

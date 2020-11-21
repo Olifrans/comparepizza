@@ -198,7 +198,7 @@ if($iniciadoU==null||$iniciadoU==''){
                     <div class="col l6 s12">
                        
                         <p class="grey-text text-lighten-12">
-			    Somos uma equipe jovem e empenhada, com uma visão da importância das novas tecnologias no desenvolvimento da sociedade.
+			    Somos uma equipe jovem e empenhada, com uma visão da importância das novas tecnologias.
                         </p>
                     </div>
                    

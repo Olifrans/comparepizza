@@ -15,6 +15,8 @@ if($iniciadoU==null||$iniciadoU==''){
     {
       die('Falha na conexão com o banco de dados: ' . mysqli_error($conexion));
     }
+
+    
 if($tabela=="IMAGENS"){
 	$consulta="SELECT Nome FROM ".$tabela." WHERE ".$campo."=".$id;
     $nome=mysqli_query($conexion,$consulta);

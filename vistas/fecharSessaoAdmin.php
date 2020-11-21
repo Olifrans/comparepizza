@@ -1,0 +1,13 @@
+<?php
+session_start();
+ $iniciadoU=$_SESSAO['usuario'];
+    $senha=$_SESSAO['senha'];
+if($iniciadoU==null||$iniciadoU==''){
+  header("Location:../sessoes.html");
+}else{
+    //SESSAO_destroy();
+    $_SESSAO['usuario']="";
+    $_SESSAO['senha']="";
+    header("Location:../sessoes.html");
+}
+?>

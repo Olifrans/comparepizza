@@ -45,7 +45,7 @@ if($inic==null||$inic==''){
 
 <body>
 
-  
+
     <script>
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -74,9 +74,7 @@ if($inic==null||$inic==''){
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="#Buscar">Buscar</a></li>
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" href="#Mapa">Mapa</a></li>
                         <li class="menu__item"><a class="menu__link waves-effect waves-light" id="btnPizzaria">Pizzaria</a></li>
-  
-                        <li class="menu__item"><a class="menu__link waves-effect waves-light" href="sessoes.html">Administrador</a></li>
-                      
+                        <li class="menu__item"><a class="menu__link waves-effect waves-light" href="sessoes.html">Administrador</a></li>                     
                         <li id="idPizzaria" style="display:none"><?php echo $idc ?></li>
                     </ul>  
                 </nav>      
@@ -155,9 +153,6 @@ echo'</ul>';
 
 
 
-
-
-
         </div>
         <div id="listaTabela">
             <div id="remover" class="row ocultar">
@@ -225,7 +220,7 @@ echo'</ul>';
 
 
                                 <div class="input-field col s6">
-                                    <h5 type="text" id="quantidade" name="quantidade"></h5>
+                                    <h5 type="text" id="quantidade" name="preco"></h5>
                                 </div>
 
 

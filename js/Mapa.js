@@ -4,6 +4,8 @@ boton.addEventListener('click', function() {
 });
 
 
+
+
 var arregloPines = [];
 
 function findMe() {

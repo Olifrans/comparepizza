@@ -18,6 +18,7 @@ if($inic==null||$inic==''){
     $idc=$idcli;
 }
 
+
 ?>
 
 
@@ -97,12 +98,7 @@ if($inic==null||$inic==''){
         <div id="Buscar"></div>
         <div id="scrolling">
            
-        
-
-
-
-
-
+      
            
            
            <?php
